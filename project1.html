@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 1: Serverless Portfolio - Alexandre Dequeker Motta</title>
+    <link rel="stylesheet" href="style.css"> </head>
+<body>
+
+    <header>
+        <a href="index.html">← Back to Portfolio</a>
+    </header>
+
+    <main>
+        <article>
+            <h1>Project 1: Building a Secure, Serverless Portfolio on AWS</h1>
+            <p class="subtitle">How I used S3, CloudFront, and a CI/CD pipeline to deploy a professional website for under $1/month.</p>
+
+            <hr>
+
+            <h2>The Goal</h2>
+            <p>
+                My primary goal was to create a fast, secure, and globally available portfolio website to showcase my cloud projects. Key requirements included using my own custom domain with HTTPS, keeping costs to an absolute minimum, and automating the deployment process so I could update the site easily.
+            </p>
+
+            <h2>The Architecture</h2>
+            <p>
+                I designed a fully serverless architecture using core AWS services. This approach is highly scalable, resilient, and incredibly cost-effective.
+            </p>
+
+            <img src="project-1-diagram.png" alt="Serverless Portfolio Architecture Diagram" style="width:100%; max-width:800px; margin-top: 20px; margin-bottom: 20px;">
+
+            <p>
+                The key components are:
+                <ul>
+                    <li><strong>Amazon S3:</strong> Used for durable, scalable object storage to host the static HTML, CSS, and image files.</li>
+                    <li><strong>Amazon CloudFront:</strong> Acts as the Content Delivery Network (CDN) to cache content globally for low-latency delivery and provides security with HTTPS.</li>
+                    <li><strong>AWS Certificate Manager (ACM):</strong> Provides the free SSL/TLS certificate for HTTPS.</li>
+                    <li><strong>Amazon Route 53:</strong> Manages the DNS for my custom domain, directing users to the CloudFront distribution.</li>
+                    <li><strong>AWS CodePipeline:</strong> Automates the CI/CD workflow, deploying any changes from my GitHub repository directly to S3.</li>
+                </ul>
+            </p>
+
+            <h2>Challenges & Lessons Learned</h2>
+            <p>
+                The most significant challenge was a persistent caching issue after the CI/CD pipeline was built. Even after the pipeline reported a successful deployment of new code to S3, the live website was not showing the latest updates. By systematically debugging each stage, I proved the code on GitHub and the object in S3 were both correct. This isolated the problem to CloudFront's cache. The solution was to create a CloudFront invalidation for `/*`, which successfully forced all edge locations to fetch the new content. This was a valuable real-world lesson in how CDNs operate.
+            </p>
+
+        </article>
+    </main>
+
+    <footer>
+        <p>Alexandre Dequeker Motta - AWS Cloud & AI Specialist</p>
+    </footer>
+
+</body>
+</html>
+
