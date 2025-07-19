@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 2: Scalable Web App - Alexandre Dequeker Motta</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="index.html">← Back to Portfolio</a>
+    </header>
+
+    <main>
+        <article>
+            <h1>Project 2: Highly Available & Scalable Web Application</h1>
+            <p class="subtitle">A classic three-tier architecture deployed with AWS Elastic Beanstalk to ensure resilience and automatic scaling.</p>
+            <hr>
+
+            <h2>The Goal</h2>
+            <p>
+                The goal was to deploy a web application that could automatically scale to handle traffic spikes and self-heal from an instance failure. This required an architecture with no single point of failure, mirroring a real-world production environment.
+            </p>
+
+            <h2>The Architecture</h2>
+            <p>
+                I used AWS Elastic Beanstalk to orchestrate the creation of a classic, fault-tolerant web environment. The diagram below shows the final architecture.
+            </p>
+
+            <img src="project-2-diagram.jpg" alt="Scalable Web App Architecture Diagram" style="width:100%; max-width:800px; margin-top: 20px; margin-bottom: 20px;">
+
+            <p>
+                Key components include:
+                <ul>
+                    <li><strong>Application Load Balancer (ALB):</strong> Distributes incoming traffic across multiple Availability Zones to prevent any single server from being overwhelmed.</li>
+                    <li><strong>Auto Scaling Group (ASG):</strong> Manages the EC2 instances, automatically adding more instances during traffic spikes (scaling out) and replacing any instances that fail health checks (self-healing).</li>
+                    <li><strong>Multi-AZ EC2 Instances:</strong> The application runs on instances in at least two different Availability Zones, ensuring the application can survive a data center outage.</li>
+                </ul>
+            </p>
+
+            <h2>The Test: Simulating a Failure</h2>
+            <p>
+                After the environment was deployed, I performed a resilience test by manually terminating the active EC2 instance. The Auto Scaling Group immediately detected the failure, and within minutes, automatically provisioned a new, healthy instance to take its place, proving the self-healing capability of the architecture.
+            </p>
+        </article>
+    </main>
+
+    <footer>
+        <p>Alexandre Dequeker Motta - Cloud & AI Specialist</p>
+    </footer>
+</body>
+</html>
+
