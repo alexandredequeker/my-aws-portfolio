@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 3: Secure VPC Network - Alexandre Dequeker Motta</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="index.html">← Back to Portfolio</a>
+    </header>
+
+    <main>
+        <article>
+            <h1>Project 3: A Secure and Private Network Foundation</h1>
+            <p class="subtitle">Building a custom Amazon VPC from scratch with public and private subnets to protect backend resources.</p>
+            <hr>
+
+            <h2>The Goal</h2>
+            <p>
+                The goal of this project was to design and implement a secure network foundation in AWS. This required creating a custom Virtual Private Cloud (VPC) with separate subnets to ensure that sensitive resources, like a database server, are completely isolated from the public internet while still being accessible by the application tier.
+            </p>
+
+            <h2>The Architecture</h2>
+            <p>
+                I built a multi-AZ VPC using the AWS Management Console. The architecture follows the principle of "defense in depth" by using multiple layers of security and routing controls.
+            </p>
+
+            <img src="project-3-diagram.jpg" alt="Secure VPC Architecture Diagram" style="width:100%; max-width:800px; margin-top: 20px; margin-bottom: 20px;">
+
+            <p>
+                Key components include:
+                <ul>
+                    <li><strong>Virtual Private Cloud (VPC):</strong> A logically isolated section of the AWS Cloud.</li>
+                    <li><strong>Public & Private Subnets:</strong> I created public subnets for internet-facing resources and private subnets for backend resources.</li>
+                    <li><strong>Internet Gateway (IGW):</strong> Allows resources in the public subnets to communicate with the internet.</li>
+                    <li><strong>NAT Gateway:</strong> Allows resources in the private subnets to initiate outbound connections for software updates.</li>
+                    <li><strong>Security Groups:</strong> Act as stateful firewalls at the instance level to control traffic between tiers.</li>
+                </ul>
+            </p>
+
+            <h2>The Test: Verifying Connectivity and Security</h2>
+            <p>
+                To validate the architecture, I launched two EC2 instances: a "Web Server" in a public subnet and a "Database Server" in a private subnet. I then used EC2 Instance Connect and the ping command to prove that the web server could communicate with the database server, and that the security groups were correctly blocking and allowing traffic as intended.
+            </p>
+        </article>
+    </main>
+
+    <footer>
+        <p>Alexandre Dequeker Motta - Cloud & AI Specialist</p>
+    </footer>
+</body>
+</html>
