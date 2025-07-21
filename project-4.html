@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 4: Serverless API - Alexandre Dequeker Motta</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="index.html">← Back to Portfolio</a>
+    </header>
+
+    <main>
+        <article>
+            <h1>Project 4: A Serverless REST API</h1>
+            <p class="subtitle">Building a highly scalable, cost-effective backend using Amazon API Gateway, AWS Lambda, and Amazon DynamoDB.</p>
+            <hr>
+
+            <h2>The Goal</h2>
+            <p>
+                The goal was to build a modern backend for a web or mobile application that requires no server management. The solution needed to be able to handle unpredictable traffic spikes, scale automatically, and be extremely cost-effective by only paying for requests as they occur.
+            </p>
+
+            <h2>The Architecture</h2>
+            <p>
+                I built a classic and powerful serverless pattern. The entire architecture is event-driven and fully managed by AWS.
+            </p>
+
+            <img src="project-4-diagram.jpg" alt="Serverless API Architecture Diagram" style="width:100%; max-width:800px; margin-top: 20px; margin-bottom: 20px;">
+
+            <p>
+                Key components include:
+                <ul>
+                    <li><strong>Amazon API Gateway:</strong> Provides a secure and scalable public "front door" (an HTTP endpoint) for the application.</li>
+                    <li><strong>AWS Lambda:</strong> Acts as the serverless compute layer, running the backend logic in Node.js to process incoming requests.</li>
+                    <li><strong>Amazon DynamoDB:</strong> A fully managed NoSQL database that provides low-latency data storage and retrieval, scaling seamlessly with the workload.</li>
+                    <li><strong>IAM Role:</strong> Provides the Lambda function with the secure permissions needed to access the DynamoDB table.</li>
+                </ul>
+            </p>
+
+            <h2>The Test: Verifying Functionality</h2>
+            <p>
+                After deploying the API, I tested it using the `curl` command-line tool. I successfully sent a `POST` request to create a new item in the DynamoDB table and then used a `GET` request with the new item's ID to retrieve it, confirming the entire end-to-end workflow was fully functional.
+            </p>
+        </article>
+    </main>
+
+    <footer>
+        <p>Alexandre Dequeker Motta - Cloud & AI Specialist</p>
+    </footer>
+</body>
+</html>
