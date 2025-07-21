@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 5: AI Sentiment Analysis - Alexandre Dequeker Motta</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="index.html">← Back to Portfolio</a>
+    </header>
+
+    <main>
+        <article>
+            <h1>Project 5: An AI-Powered Sentiment Analysis API</h1>
+            <p class="subtitle">Integrating a serverless API with Amazon Comprehend to perform real-time natural language processing.</p>
+            <hr>
+
+            <h2>The Goal</h2>
+            <p>
+                The goal of this project was to build an intelligent API that could analyze the sentiment of any given text. This demonstrates the power of integrating AWS's pre-trained AI models into a serverless application, allowing for sophisticated analysis without building or training any models from scratch.
+            </p>
+
+            <h2>The Architecture</h2>
+            <p>
+                This project builds upon the serverless API pattern, swapping the database for a managed AI service. The entire architecture is event-driven and requires zero server management.
+            </p>
+
+            <img src="project-5-diagram.jpg" alt="AI Sentiment Analysis API Architecture Diagram" style="width:100%; max-width:800px; margin-top: 20px; margin-bottom: 20px;">
+
+            <p>
+                Key components include:
+                <ul>
+                    <li><strong>Amazon API Gateway:</strong> Provides the public HTTPS endpoint that receives text data for analysis.</li>
+                    <li><strong>AWS Lambda:</strong> Runs the Python code that receives the text from API Gateway and passes it to the AI service.</li>
+                    <li><strong>Amazon Comprehend:</strong> A managed Natural Language Processing (NLP) service that performs the actual sentiment analysis (Positive, Negative, Neutral) on the text.</li>
+                    <li><strong>IAM Role:</strong> Provides the Lambda function with the secure, least-privilege permissions needed to call the Amazon Comprehend service.</li>
+                </ul>
+            </p>
+
+            <h2>The Test: Analyzing Text in Real Time</h2>
+            <p>
+                After deploying the API, I tested it using the `curl` command-line tool. I sent various text samples (positive, negative, and neutral) in a `POST` request and successfully received a JSON response containing the correct sentiment and confidence scores, proving the end-to-end integration was working perfectly.
+            </p>
+        </article>
+    </main>
+
+    <footer>
+        <p>Alexandre Dequeker Motta - Cloud & AI Specialist</p>
+    </footer>
+</body>
+</html>
